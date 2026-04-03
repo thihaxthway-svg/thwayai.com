@@ -434,13 +434,37 @@
       margin-bottom: 2rem;
       opacity: 0;
       animation: fadeUp .8s var(--ease) .05s forwards;
+      position: relative;
+      display: inline-block;
+    }
+    .hero-logo-wrap::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 1px; height: 1px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
     }
     .hero-logo-img {
       width: 280px;
       height: 280px;
       object-fit: contain;
-      filter: drop-shadow(0 0 25px rgba(108,200,222,.4));
-      animation: breathe 3s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+      animation: logoBreathe 5s ease-in-out infinite;
+    }
+    @keyframes logoBreathe {
+      0%, 100% {
+        filter: drop-shadow(0 0 10px rgba(108,200,222,.3))
+               drop-shadow(0 0 28px rgba(108,200,222,.15))
+               drop-shadow(0 0 50px rgba(108,200,222,.06));
+      }
+      50% {
+        filter: drop-shadow(0 0 20px rgba(108,200,222,.55))
+               drop-shadow(0 0 45px rgba(108,200,222,.3))
+               drop-shadow(0 0 80px rgba(108,200,222,.12));
+      }
     }
     .hero-mission {
       font-size: .85rem;
@@ -459,15 +483,17 @@
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes pulse {
-      0%, 70% { opacity: 1; }
+      0%, 100% { opacity: 1; }
       50% { opacity: .4; }
     }
     @keyframes breathe {
       0%, 100% {
-        filter: drop-shadow(0 0 20px rgba(108,200,222,.35)) drop-shadow(0 0 45px rgba(108,200,222,.15));
+        opacity: .45;
+        transform: translate(-50%, -50%) scale(1);
       }
       50% {
-        filter: drop-shadow(0 0 45px rgba(108,200,222,.7)) drop-shadow(0 0 75px rgba(108,200,222,.35));
+        opacity: .9;
+        transform: translate(-50%, -50%) scale(1.1);
       }
     }
 
@@ -686,9 +712,9 @@
       Whether you&rsquo;re exploring AI strategy, need professional consultation, or want to discuss collaboration, we&rsquo;d love to hear from you.
     </p>
     <div class="contact-links">
-      <a href="mailto:thiha.thway@thwayai.com">
+      <a href="/cdn-cgi/l/email-protection#790d11101118570d110e1800390d110e18001810571a1614">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        thiha.thway@thwayai.com
+        <span class="__cf_email__" data-cfemail="e2968a8b8a83cc968a95839ba2968a95839b838bcc818d8f">[email&#160;protected]</span>
       </a>
       <a href="https://linkedin.com/in/thihathway" target="_blank">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -702,7 +728,7 @@
   <p>&copy; 2026 Thway AI LLC. All rights reserved. &nbsp;|&nbsp; Queens, New York &nbsp;|&nbsp; <a href="https://thwayai.com">thwayai.com</a></p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const toggle = document.getElementById('navToggle');
   const links  = document.getElementById('navLinks');
   toggle.addEventListener('click', () => links.classList.toggle('open'));
@@ -712,11 +738,4 @@
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.15 });
-  reveals.forEach(el => observer.observe(el));
-</script>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-</body>
-</html>
+      if (entry.isIntersecting) en
